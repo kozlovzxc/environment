@@ -1,0 +1,23 @@
+---
+- name: Install zsh and curl
+  apt: name={{item}}
+  with_items:
+    - zsh
+    - curl
+  become: yes
+  become_user: root
+
+- name: Install oh-my-zsh
+  git: repo=https://github.com/robbyrussell/oh-my-zsh.git dest={{oh_my_zsh_dir}}
+
+- name: set up oh-my-zsh config
+  template: src=zshrc.j2 dest={{ansible_user_dir}}/.zshrc
+
+- name: set up colorscheme
+  copy: src=honukai.zsh-theme dest={{oh_my_zsh_dir}}/themes/honukai.zsh-theme
+
+- name: set up zsh as default shell
+  user: name={{ansible_user_id}} shell=/bin/zsh
+  become: yes
+  become_user: root
+...

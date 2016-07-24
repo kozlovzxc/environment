@@ -1,0 +1,12 @@
+---
+- name: Install git
+  apt: name=git
+  become: yes
+  become_user: root
+
+- name: set up global gitignore conf
+  template: src=gitignore_global dest={{ansible_user_dir}}/.gitignore_global
+
+- name: configure git to use global gitignore
+  git_config: name=core.excludesfile scope=global value="{{ansible_user_dir}}/.gitignore_global"
+...

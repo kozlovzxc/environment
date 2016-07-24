@@ -1,0 +1,10 @@
+---
+- name: deploy environment on local machine
+  hosts: my-machine
+  connection: ssh
+  roles:
+    - prepare
+    - git
+    - vim 
+    - zsh
+...

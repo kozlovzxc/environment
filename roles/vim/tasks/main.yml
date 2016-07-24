@@ -1,0 +1,24 @@
+---
+- name: Install vim
+  apt: name=vim
+  become: yes
+  become_user: root
+
+- name: set up vim config
+  template: src=vimrc dest={{ansible_user_dir}}/.vimrc
+
+- name: Install Ctags
+  apt: name=exuberant-ctags
+  become: yes
+  become_user: root
+
+- name: set up ctags config
+  template: src=ctags dest={{ansible_user_dir}}/.ctags
+
+- name: Install Vundle
+  git: repo=https://github.com/VundleVim/Vundle.vim.git dest={{ansible_user_dir}}/.vim/bundle/Vundle.vim
+
+- name: Install Vundle Plugins
+  command: vim -E -s -c "source {{ansible_user_dir}}/.vimrc" -c PluginInstall -c qa 
+  ignore_errors: true
+...

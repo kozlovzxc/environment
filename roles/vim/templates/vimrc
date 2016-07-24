@@ -1,0 +1,110 @@
+set nocompatible              " be iMproved, required
+filetype off                  " required
+
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+" let Vundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim'
+Plugin 'taglist.vim'
+Plugin 'molokai'
+Plugin 'scrooloose/nerdTree'
+Bundle 'chase/vim-ansible-yaml'
+
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
+" To ignore plugin indent changes, instead use:
+"filetype plugin on
+"
+" Turn on syntax highlighting
+syntax on
+
+" Security
+set modelines=0
+set nomodeline
+
+" Show line numbers
+set number
+
+set undofile
+
+" Show file stats
+set ruler
+
+" Blink cursor on error instead of beeping (grr)
+set visualbell
+
+" Encoding
+set encoding=utf-8
+
+" Whitespace
+set wrap
+set textwidth=0
+set tabstop=4
+set shiftwidth=4
+set softtabstop=4
+set expandtab
+set noshiftround
+
+" Cursor motion
+set backspace=indent,eol,start
+set matchpairs+=<:> " use % to jump between pairs
+
+" Move up/down editor lines
+" nnoremap j gj
+" nnoremap k gk
+
+" Allow hidden buffers
+set hidden
+
+" Rendering
+set ttyfast
+
+" Status bar
+set laststatus=2
+
+" Last line
+set showmode
+set showcmd
+
+" Searching
+set hlsearch
+set incsearch
+set ignorecase
+set smartcase
+set showmatch
+
+" clipboard
+set clipboard=unnamed 
+
+" Remap help key.
+inoremap <F1> <ESC>:set invfullscreen<CR>a
+nnoremap <F1> :set invfullscreen<CR>
+vnoremap <F1> :set invfullscreen<CR>
+
+" next variable in some langs
+noremap L f$
+noremap H F$
+
+" move between splits
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
+
+" Molokai Plugin
+set t_Co=256
+colorscheme molokai
+hi Normal ctermbg=none
+hi NonText ctermbg=none
+hi LineNr ctermbg=none
+hi TODO ctermbg=none
+hi Special ctermbg=none
+
+" Ctags Plugin
+set tags=./tags,tags;$HOME
+
+" NERDTree Plugin
+map <C-t> :NERDTreeToggle<CR>
