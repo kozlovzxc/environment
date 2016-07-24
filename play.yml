@@ -5,6 +5,7 @@
   roles:
     - prepare
     - git
+    - tmux
     - vim 
     - zsh
 ...
