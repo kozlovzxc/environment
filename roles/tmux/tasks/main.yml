@@ -1,0 +1,9 @@
+---
+- name: install tmux
+  apt: name=tmux
+  become: yes
+  become_user: root
+
+- name: set up tmux config
+  template: src=tmux.conf dest={{ansible_user_dir}}/.tmux.conf 
+...
