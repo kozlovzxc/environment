@@ -11,6 +11,10 @@ Plugin 'taglist.vim'
 Plugin 'molokai'
 Plugin 'scrooloose/nerdTree'
 Bundle 'chase/vim-ansible-yaml'
+Plugin 'easymotion/vim-easymotion'
+Plugin 'haya14busa/incsearch-easymotion.vim'
+Plugin 'haya14busa/incsearch.vim'
+Plugin 'vim-airline/vim-airline'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -47,14 +51,16 @@ set shiftwidth=4
 set softtabstop=4
 set expandtab
 set noshiftround
+set autoindent
+set smartindent
 
 " Cursor motion
 set backspace=indent,eol,start
 set matchpairs+=<:> " use % to jump between pairs
 
 " Move up/down editor lines
-" nnoremap j gj
-" nnoremap k gk
+nnoremap j gj
+nnoremap k gk
 
 " Allow hidden buffers
 set hidden
@@ -77,7 +83,7 @@ set smartcase
 set showmatch
 
 " clipboard
-set clipboard=unnamed 
+set clipboard=unnamed
 
 " Remap help key.
 inoremap <F1> <ESC>:set invfullscreen<CR>a
@@ -108,3 +114,41 @@ set tags=./tags,tags;$HOME
 
 " NERDTree Plugin
 map <C-t> :NERDTreeToggle<CR>
+
+" Easy-motion Plugin
+map <Leader> <Plug>(easymotion-prefix)
+
+" <Leader>f{char} to move to {char}
+map  <Leader>f <Plug>(easymotion-bd-f)
+nmap <Leader>f <Plug>(easymotion-overwin-f)
+
+" s{char}{char} to move to {char}{char}
+nmap <Leader>s <Plug>(easymotion-overwin-f2)
+
+" Move to line
+map <Leader>l <Plug>(easymotion-bd-jk)
+nmap <Leader>l <Plug>(easymotion-overwin-line)
+
+" Move to word
+map  <Leader>w <Plug>(easymotion-bd-w)
+nmap <Leader>w <Plug>(easymotion-overwin-w)
+
+" You can use other keymappings like <C-l> instead of <CR> if you want to
+" use these mappings as default search and somtimes want to move cursor with
+" EasyMotion.
+function! s:incsearch_config(...) abort
+  return incsearch#util#deepextend(deepcopy({
+  \   'modules': [incsearch#config#easymotion#module({'overwin': 1})],
+  \   'keymap': {
+  \     "\<CR>": '<Over>(easymotion)'
+  \   },
+  \   'is_expr': 0
+  \ }), get(a:, 1, {}))
+endfunction
+
+noremap <silent><expr> /  incsearch#go(<SID>incsearch_config())
+noremap <silent><expr> ?  incsearch#go(<SID>incsearch_config({'command': '?'}))
+noremap <silent><expr> g/ incsearch#go(<SID>incsearch_config({'is_stay': 1}))
+
+let g:EasyMotion_smartcase = 1
+
