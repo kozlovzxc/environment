@@ -1,10 +1,9 @@
 ---
-- name: deploy environment on local machine
+- name: deploy environment
   hosts: localhost
   roles:
-    - prepare
-    - git
-    - tmux
-    - vim 
-    - zsh
+    - {role: git, tags:["git"]}
+    - {role: tmux, tags:["tmux"]}
+    - {role: vim, tags:["vim"]}
+    - {role: zsh, tags:["zsh"]}
 ...
