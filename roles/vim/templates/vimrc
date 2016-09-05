@@ -15,6 +15,7 @@ Plugin 'easymotion/vim-easymotion'
 Plugin 'haya14busa/incsearch-easymotion.vim'
 Plugin 'haya14busa/incsearch.vim'
 Plugin 'vim-airline/vim-airline'
+Plugin 'morhetz/gruvbox'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -100,14 +101,9 @@ nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
-" Molokai Plugin
 set t_Co=256
-colorscheme molokai
-hi Normal ctermbg=none
-hi NonText ctermbg=none
-hi LineNr ctermbg=none
-hi TODO ctermbg=none
-hi Special ctermbg=none
+set background=dark
+colorscheme gruvbox
 
 " Ctags Plugin
 set tags=./tags,tags;$HOME
@@ -149,6 +145,6 @@ endfunction
 noremap <silent><expr> /  incsearch#go(<SID>incsearch_config())
 noremap <silent><expr> ?  incsearch#go(<SID>incsearch_config({'command': '?'}))
 noremap <silent><expr> g/ incsearch#go(<SID>incsearch_config({'is_stay': 1}))
-
 let g:EasyMotion_smartcase = 1
 
+let g:airline#extensions#tabline#enabled = 1
