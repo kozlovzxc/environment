@@ -1,6 +1,7 @@
 ---
 - name: Install vim
-  apt: name=vim
+  action: >
+    {{ansible_pkg_mgr}} name=vim
   become: yes
   become_user: root
 
@@ -8,7 +9,8 @@
   template: src=vimrc dest={{ansible_user_dir}}/.vimrc
 
 - name: Install Ctags
-  apt: name=exuberant-ctags
+  action: >
+    {{ansible_pkg_mgr}} name=exuberant-ctags
   become: yes
   become_user: root
 

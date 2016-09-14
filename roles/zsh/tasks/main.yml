@@ -1,6 +1,7 @@
 ---
 - name: Install zsh and curl
-  apt: name={{item}}
+  action: >
+    {{ansible_pkg_mgr}} name={{item}}
   with_items:
     - zsh
     - curl

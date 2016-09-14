@@ -1,6 +1,7 @@
 ---
 - name: install tmux
-  apt: name=tmux
+  action: >
+    {{ansible_pkg_mgr}} name=tmux
   become: yes
   become_user: root
 

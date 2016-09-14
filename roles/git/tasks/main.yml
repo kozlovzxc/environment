@@ -1,6 +1,7 @@
 ---
 - name: Install git
-  apt: name=git
+  action: >
+    {{ansible_pkg_mgr}} name=git state=present
   become: yes
   become_user: root
 
