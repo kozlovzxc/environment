@@ -13,6 +13,7 @@ Plugin 'scrooloose/nerdTree'
 Bundle 'chase/vim-ansible-yaml'
 Plugin 'vim-airline/vim-airline'
 Plugin 'morhetz/gruvbox'
+Plugin 'tagbar'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -105,4 +106,13 @@ colorscheme gruvbox
 " Ctags Plugin
 set tags=./tags,tags;$HOME
 
+" NERDTree Plugin
+map <F3> :NERDTreeToggle<CR>
+
+" Tagbar Plugin
+map <F2> :TagbarToggle<CR>
+
 let g:airline#extensions#tabline#enabled = 1
+
+" disable visual bell
+set noerrorbells visualbell t_vb=
