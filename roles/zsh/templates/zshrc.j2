@@ -74,3 +74,9 @@ export EDITOR="vim"
 # need this for vim theme
 alias tmux='tmux -2'
 alias burp='java -jar /usr/local/bin/burp.jar'
+
+#my functions 
+myip() { curl ipinfo.io }
+pipupdate() { pip freeze --local | grep -v '^\-e' | cut -d = -f 1 | xargs -n1 pip install -U }
+suprunge() { curl -F 'sprunge=<-' http://sprunge.us }
+weather() { curl wttr.in/moscow }
