@@ -14,6 +14,8 @@ Bundle 'chase/vim-ansible-yaml'
 Plugin 'vim-airline/vim-airline'
 Plugin 'morhetz/gruvbox'
 Plugin 'tagbar'
+Plugin 'Valloric/YouCompleteMe'
+Plugin 'Syntastic'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -112,7 +114,24 @@ map <F3> :NERDTreeToggle<CR>
 " Tagbar Plugin
 map <F2> :TagbarToggle<CR>
 
+" Syntastic Plugin
+map <F4> :SyntasticCheck<CR>
+
 let g:airline#extensions#tabline#enabled = 1
 
 " disable visual bell
 set noerrorbells visualbell t_vb=
+
+" YouCompleteMe settings
+let g:ycm_collect_identifiers_from_tags_files = 1
+set completeopt-=preview
+
+" Syntastic
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+" let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
