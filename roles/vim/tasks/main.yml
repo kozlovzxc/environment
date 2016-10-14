@@ -23,4 +23,7 @@
 - name: Install Vundle Plugins
   command: vim -E -s -c "source {{ansible_user_dir}}/.vimrc" -c PluginInstall -c qa 
   ignore_errors: true
+
+- name: Compile YouCompleteMe
+  command: {{ansible_user_dir}}/.vim/bundle/YouCompleteMe/install.py --clang-completer
 ...
