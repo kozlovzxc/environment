@@ -79,4 +79,10 @@ alias burp='java -jar /usr/local/bin/burp.jar'
 myip() { curl ipinfo.io }
 pipupdate() { pip freeze --local | grep -v '^\-e' | cut -d = -f 1 | xargs -n1 pip install -U }
 suprunge() { curl -F 'sprunge=<-' http://sprunge.us }
-weather() { curl wttr.in/moscow }
+weather() { 
+    if [ "$#" -eq 1 ]; then
+        curl "wttr.in/$1"
+    else
+        curl wttr.in/moscow
+    fi
+}
