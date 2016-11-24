@@ -63,8 +63,14 @@ source $ZSH/oh-my-zsh.sh
 
 # ssh
 export SSH_KEY_PATH="~/.ssh/home_rsa"
+
 # vim
 export EDITOR="vim"
+
+export PATH="$PATH:$HOME/.local/bin"
+export HISTFILE=~/.zsh_history
+export HISTSIZE=999999999
+export SAVEHIST=$HISTSIZE
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh

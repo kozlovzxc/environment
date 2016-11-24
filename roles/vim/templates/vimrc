@@ -14,8 +14,10 @@ Bundle 'chase/vim-ansible-yaml'
 Plugin 'vim-airline/vim-airline'
 Plugin 'morhetz/gruvbox'
 Plugin 'tagbar'
-Plugin 'Valloric/YouCompleteMe'
+" Plugin 'Valloric/YouCompleteMe'
 Plugin 'Syntastic'
+" Plugin 'vim-scala'
+" look for Sbt-vim
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
