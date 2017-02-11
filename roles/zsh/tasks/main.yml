@@ -17,6 +17,9 @@
 - name: set up colorscheme
   copy: src=honukai.zsh-theme dest={{oh_my_zsh_dir}}/themes/honukai.zsh-theme
 
+- name: set up zsh-syntax-highlighting
+  git: repo=https://github.com/zsh-users/zsh-syntax-highlighting.git dest={{oh_my_zsh_dir}}/custom/plugins/zsh-syntax-highlighting
+
 - name: set up zsh as default shell
   user: name={{ansible_user_id}} shell=/bin/zsh
   become: yes
