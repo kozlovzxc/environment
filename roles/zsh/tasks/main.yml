@@ -1,10 +1,11 @@
 ---
-- name: Install zsh and curl
+- name: Install dependencies
   action: >
     {{ansible_pkg_mgr}} name={{item}}
   with_items:
     - zsh
     - curl
+    - autojump
   become: yes
   become_user: root
 
