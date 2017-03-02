@@ -1,0 +1,51 @@
+---
+- name: Install deps
+  action: >
+    {{ansible_pkg_mgr}} name={{item}}
+  with_items:
+    - fish
+    - git
+  become: yes
+  become_user: root
+  when: ansible_distribution != 'Ubuntu'
+
+- name: Add deps repos(Ubuntu)
+  apt_repository:
+    repo: "{{item}}"
+    state: present
+  with_items:
+    - 'ppa:fish-shell/release-2'
+    - 'ppa:git-core/ppa'
+  become: yes
+  become_user: root
+  when: ansible_distribution == 'Ubuntu'
+
+- name: Install deps(Ubuntu)
+  apt:
+    name: "{{item}}"
+    state: present
+    update_cache: yes
+  with_items:
+    - fish
+    - git
+  become: yes
+  become_user: root
+  when: ansible_distribution == 'Ubuntu'
+
+- name: Clone oh-my-fish
+  git: repo=https://github.com/oh-my-fish/oh-my-fish dest=/tmp/omf
+
+- name: Install oh-my-fish
+  command: /tmp/omf/bin/install --offline --noninteractive
+
+#- name: Install plugins
+#  include: plugins.yml
+
+- name: Install themes
+  include: themes.yml
+
+- name: set up fish as default shell
+  user: name={{ansible_user_id}} shell=/usr/bin/fish
+  become: yes
+  become_user: root
+...
