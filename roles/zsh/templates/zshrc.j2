@@ -69,13 +69,13 @@ export SSH_KEY_PATH="~/.ssh/home_rsa"
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
 
-# {{{ User aliases
+# {{'{{{'}} User aliases
 alias tmux='tmux -2'
 alias cdA='cd ~/.config/awesome'
 alias quote='fortune -a | fmt -80 -s | $(shuf -n 1 -e cowsay cowthink) -$(shuf -n 1 -e b d g p s t w y) -f $(shuf -n 1 -e $(cowsay -l | tail -n +2)) -n'
-# }}}
+# {{'}}}'}}
 
-# {{{ User exports
+# {{'{{{'}} User exports
 export EDITOR="vim"
 export SUDO_EDITOR="$EDITOR"
 export VISUAL="$EDITOR"
@@ -84,9 +84,10 @@ export PATH="$PATH:$HOME/.local/bin"
 export HISTFILE=~/.zsh_history
 export HISTSIZE=999999999
 export SAVEHIST=$HISTSIZE
-# }}}
+# {{'}}}'}}
 
-# {{{ User functions
+
+# {{'{{{'}} User functions
 myip() { curl ipinfo.io }
 pipupdate() { pip freeze --local | grep -v '^\-e' | cut -d = -f 1 | xargs -n1 pip install -U }
 suprunge() { curl -F 'sprunge=<-' http://sprunge.us }
@@ -97,4 +98,5 @@ weather() {
         curl wttr.in/moscow
     fi
 }
-# }}}
+# {{'}}}'}}
+

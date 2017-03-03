@@ -8,11 +8,11 @@
 - name: set up vim config
   template: src=vimrc dest={{ansible_user_dir}}/.vimrc
 
-- name: Install Ctags
-  action: >
-    {{ansible_pkg_mgr}} name=exuberant-ctags
-  become: yes
-  become_user: root
+#- name: Install Ctags
+#  action: >
+#    {{ansible_pkg_mgr}} name=exuberant-ctags
+#  become: yes
+#  become_user: root
 
 - name: set up ctags config
   template: src=ctags dest={{ansible_user_dir}}/.ctags
@@ -24,6 +24,6 @@
   command: vim -E -s -c "source {{ansible_user_dir}}/.vimrc" -c PluginInstall -c qa 
   ignore_errors: true
 
-  #- name: Compile YouCompleteMe
+#- name: Compile YouCompleteMe
   #command: "{{ansible_user_dir}}/.vim/bundle/YouCompleteMe/install.py --clang-completer"
 ...

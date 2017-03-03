@@ -1,6 +1,8 @@
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
+set shell=/usr/bin/bash
+
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
@@ -123,8 +125,8 @@ let g:airline#extensions#tabline#enabled = 1
 set noerrorbells visualbell t_vb=
 
 " YouCompleteMe settings
-let g:ycm_collect_identifiers_from_tags_files = 1
-set completeopt-=preview
+" let g:ycm_collect_identifiers_from_tags_files = 1
+" set completeopt-=preview
 
 " Syntastic
 set statusline+=%#warningmsg#
@@ -133,7 +135,6 @@ set statusline+=%*
 
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
-" let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
-set shell=/usr/bin/bash
