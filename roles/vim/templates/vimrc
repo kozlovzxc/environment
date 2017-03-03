@@ -16,6 +16,11 @@ Bundle 'chase/vim-ansible-yaml'
 Plugin 'vim-airline/vim-airline'
 Plugin 'morhetz/gruvbox'
 Plugin 'tagbar'
+Plugin 'delimitMate.vim'
+Plugin 'indentLine.vim'
+Plugin 'scrooloose/nerdcommenter'
+Plugin 'mhinz/vim-signify'
+Plugin 'kien/ctrlp.vim'
 " Plugin 'Valloric/YouCompleteMe'
 " Plugin 'Syntastic'
 
@@ -138,3 +143,19 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
+" nerdcommenter
+filetype plugin on
+" Add spaces after comment delimiters by default
+let g:NERDSpaceDelims = 1
+" Use compact syntax for prettified multi-line comments
+let g:NERDCompactSexyComs = 1
+" Allow commenting and inverting empty lines (useful when commenting a region)
+let g:NERDCommentEmptyLines = 1
+" Enable trimming of trailing whitespace when uncommenting
+let g:NERDTrimTrailingWhitespace = 1
+
+" ctrlP
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlP'
+let g:ctrlp_working_path_mode = 'ra'
+let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
