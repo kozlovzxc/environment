@@ -38,11 +38,22 @@
 - name: Install oh-my-fish
   command: /tmp/omf/bin/install --offline --noninteractive
 
-#- name: Install plugins
-#  include: plugins.yml
+- name: Install oh-my-fish plugins
+  shell: omf install {{item}}
+  args:
+    executable: /usr/bin/fish
+  with_items:
+    - fasd
 
-- name: Install themes
-  include: themes.yml
+- name: Install oh-my-fish theme
+  shell: omf install cbjohnson
+  args:
+    executable: /usr/bin/fish
+
+- name: Use oh-my-fish theme
+  shell: omf theme cbjohnson
+  args:
+    executable: /usr/bin/fish
 
 - name: set up fish as default shell
   user: name={{ansible_user_id}} shell=/usr/bin/fish

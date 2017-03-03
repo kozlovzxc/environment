@@ -1,9 +1,0 @@
-- name: Install oh-my-fish theme
-  shell: omf install cbjohnson
-  args:
-    executable: /usr/bin/fish
-
-- name: Use oh-my-fish theme
-  shell: omf theme cbjohnson
-  args:
-    executable: /usr/bin/fish

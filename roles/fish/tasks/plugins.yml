@@ -1,4 +1,0 @@
-- name: Install plugins
-  command: omf install {{item}}
-  with_items:
-    - fasd
