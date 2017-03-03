@@ -8,11 +8,20 @@
 - name: set up vim config
   template: src=vimrc dest={{ansible_user_dir}}/.vimrc
 
-#- name: Install Ctags
-#  action: >
-#    {{ansible_pkg_mgr}} name=exuberant-ctags
-#  become: yes
-#  become_user: root
+- name: Install Ctags
+  action: >
+    {{ansible_pkg_mgr}} name=exuberant-ctags
+  become: yes
+  become_user: root
+  when: ansible_distribution != 'Archlinux'
+
+- name: Install Ctags(Archlinux)
+  apt:
+    name: "ctags"
+    state: present
+  become: yes
+  become_user: root
+  when: ansible_distribution == 'Archlinux'
 
 - name: set up ctags config
   template: src=ctags dest={{ansible_user_dir}}/.ctags
