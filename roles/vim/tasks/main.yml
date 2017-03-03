@@ -16,9 +16,8 @@
   when: ansible_distribution != 'Archlinux'
 
 - name: Install Ctags(Archlinux)
-  apt:
-    name: "ctags"
-    state: present
+  action: >
+    {{ansible_pkg_mgr}} name=ctags
   become: yes
   become_user: root
   when: ansible_distribution == 'Archlinux'
