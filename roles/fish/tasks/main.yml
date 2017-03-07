@@ -54,7 +54,7 @@
     - omf/theme-cbjohnson
     - omf/fasd
     - fzf
-    - grc
+    - omf/grc
     - pbcopy
 
 - name: Setup fish config
