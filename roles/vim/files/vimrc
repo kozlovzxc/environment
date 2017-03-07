@@ -21,6 +21,9 @@ Plugin 'indentLine.vim'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'mhinz/vim-signify'
 Plugin 'kien/ctrlp.vim'
+Plugin 'dag/vim-fish'
+Plugin 'surround.vim'
+Plugin 'christoomey/vim-system-copy'
 " Plugin 'Valloric/YouCompleteMe'
 " Plugin 'Syntastic'
 
@@ -159,3 +162,15 @@ let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_working_path_mode = 'ra'
 let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
+
+" relative number
+set relativenumber
+function! NumberToggle()
+  if(&relativenumber == 1)
+    set number
+  else
+    set relativenumber
+  endif
+endfunc
+
+nnoremap <C-n> :call NumberToggle()<cr>

@@ -1,13 +1,16 @@
 ---
-- name: Install deps
+- name: Install deps(Arch)
   action: >
     {{ansible_pkg_mgr}} name={{item}}
   with_items:
     - fish
     - git
+    - grc
+    - fzf
+    - fasd
   become: yes
   become_user: root
-  when: ansible_distribution != 'Ubuntu'
+  when: ansible_distribution == 'Archlinux'
 
 - name: Add deps repos(Ubuntu)
   apt_repository:
@@ -28,32 +31,34 @@
   with_items:
     - fish
     - git
+    - grc
   become: yes
   become_user: root
   when: ansible_distribution == 'Ubuntu'
 
-- name: Clone oh-my-fish
-  git: repo=https://github.com/oh-my-fish/oh-my-fish dest=/tmp/omf
+- name: Create config directory for fish
+  file:
+    path: "{{ ansible_env.HOME }}/.config/fish/functions"
+    state: directory
 
-- name: Install oh-my-fish
-  command: /tmp/omf/bin/install --offline --noninteractive
+- name: Download fisherman
+  get_url:
+    url: https://raw.githubusercontent.com/fisherman/fisherman/master/fisher.fish
+    dest: "{{ ansible_env.HOME }}/.config/fish/functions/fisher.fish"
 
-- name: Install oh-my-fish plugins
-  shell: omf install {{item}}
+- name: Install fisher plugins
+  shell: fisher {{item}}
   args:
     executable: /usr/bin/fish
   with_items:
-    - fasd
+    - omf/theme-cbjohnson
+    - omf/fasd
+    - fzf
+    - grc
+    - pbcopy
 
-- name: Install oh-my-fish theme
-  shell: omf install cbjohnson
-  args:
-    executable: /usr/bin/fish
-
-- name: Use oh-my-fish theme
-  shell: omf theme cbjohnson
-  args:
-    executable: /usr/bin/fish
+- name: Setup fish config
+  copy: src=config.fish dest="{{ ansible_env.HOME }}/.config/fish/config.fish"
 
 - name: set up fish as default shell
   user: name={{ansible_user_id}} shell=/usr/bin/fish

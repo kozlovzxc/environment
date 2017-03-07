@@ -6,7 +6,7 @@
   become_user: root
 
 - name: set up vim config
-  template: src=vimrc dest={{ansible_user_dir}}/.vimrc
+  copy: src=vimrc dest={{ansible_user_dir}}/.vimrc
 
 - name: Install Ctags
   action: >
@@ -23,7 +23,7 @@
   when: ansible_distribution == 'Archlinux'
 
 - name: set up ctags config
-  template: src=ctags dest={{ansible_user_dir}}/.ctags
+  copy: src=ctags dest={{ansible_user_dir}}/.ctags
 
 - name: Install Vundle
   git: repo=https://github.com/VundleVim/Vundle.vim.git dest={{ansible_user_dir}}/.vim/bundle/Vundle.vim
