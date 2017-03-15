@@ -21,6 +21,15 @@
 - name: set up zsh-syntax-highlighting
   git: repo=https://github.com/zsh-users/zsh-syntax-highlighting.git dest={{oh_my_zsh_dir}}/custom/plugins/zsh-syntax-highlighting
 
+- name: download fzf
+  git: repo=https://github.com/junegunn/fzf dest={{ansible_env.HOME}}/.fzf
+
+- name: install fzf
+  command: "{{ansible_env.HOME}}/.fzf/install --all --64"
+
+- name: download zsh-autocompletion
+  git: repo=https://github.com/zsh-users/zsh-autosuggestions dest={{oh_my_zsh_dir}}/custom/plugins/zsh-autosuggestions
+
 - name: set up zsh as default shell
   user: name={{ansible_user_id}} shell=/bin/zsh
   become: yes

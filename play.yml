@@ -5,5 +5,5 @@
     - {role: git, tags: ["git"]}
     - {role: tmux, tags: ["tmux"]}
     - {role: vim, tags: ["vim"]}
-    - {role: fish, tags: ["fish"]}
+    - {role: zsh, tags: ["zsh"]}
 ...
