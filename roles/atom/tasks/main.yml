@@ -1,0 +1,40 @@
+# - name: Add deps repos(Ubuntu)
+#   apt_repository:
+#     repo: "ppa:webupd8team/atom"
+#     state: present
+#   become: yes
+#   become_user: root
+#   when: ansible_distribution == 'Ubuntu'
+
+- name: Install deps(Arch)
+  action: >
+    {{ansible_pkg_mgr}} name=atom
+  become: yes
+  become_user: root
+
+- name: copy keymap file
+  copy: src=keymap.cson dest="{{ ansible_env.HOME }}/.atom/keymap.cson"
+
+- name: install all deps
+  shell: "apm install {{item}}"
+  with_items:
+    - autocomplete-plus
+    - busy-signal
+    - cursor-history
+    - file-icons
+    - fuzzy-finder
+    - git-plus
+    - highlight-selected
+    - intentions
+    - language-javascript-jsx
+    - language-latex
+    - linter
+    - linter-eslint
+    - linter-pylint
+    - linter-ui-default
+    - minimap
+    - permanent-delete
+    - tabs-to-spaces
+    - todo-show
+    - vim-mode-plus
+    - vim-mode-plus-move-to-symbols
