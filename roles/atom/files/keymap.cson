@@ -10,9 +10,5 @@
 'atom-text-editor':
   'ctrl-shift-m': 'bracket-matcher:select-inside-brackets'
   'ctrl-shift-l': 'editor:split-selections-into-lines'
+  'ctrl-alt-h': 'highlight-selected:toggle'
 
-'atom-workspace':
-  'ctrl-i':     'cursor-history:next'
-  'ctrl-o':     'cursor-history:prev'
-  'ctrl-cmd-i': 'cursor-history:next-within-editor'
-  'ctrl-cmd-o': 'cursor-history:prev-within-editor'

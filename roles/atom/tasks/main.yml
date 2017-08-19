@@ -18,23 +18,31 @@
 - name: install all deps
   shell: "apm install {{item}}"
   with_items:
+    # - cursor-history
+    # - vim-mode-plus
+    # - vim-mode-plus-move-to-symbols
+    - atom-beautify
+    - atom-typescript
     - autocomplete-plus
     - busy-signal
-    - cursor-history
+    - editorconfig
     - file-icons
     - fuzzy-finder
     - git-plus
     - highlight-selected
+    - hyperclick
     - intentions
+    - language-docker
     - language-javascript-jsx
     - language-latex
+    - language-smalltalk
     - linter
     - linter-eslint
+    - linter-golinter
     - linter-pylint
+    - linter-tslint
     - linter-ui-default
     - minimap
     - permanent-delete
     - tabs-to-spaces
-    - todo-show
-    - vim-mode-plus
-    - vim-mode-plus-move-to-symbols
+    - zentabs
