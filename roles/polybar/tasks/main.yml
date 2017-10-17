@@ -1,0 +1,14 @@
+---
+- name: Install i3 and deps
+  command: "yaourt -S polybar"
+
+- file:
+    path: "{{ansible_user_dir}}/.config/polybar"
+    state: directory
+
+- name: set up config
+  template: src="{{item}}" dest="{{ansible_user_dir}}/.config/polybar/{{item}}"
+  with_items:
+    - config
+    - launch.sh
+...
