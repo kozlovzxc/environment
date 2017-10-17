@@ -1,0 +1,20 @@
+---
+- name: Install i3 and deps
+  command: "yaourt -S {{item}}"
+  with_items:
+    - i3-gaps
+    - xautolock
+    - i3lock
+    - thunar
+    - rofi
+    - urxvt
+    - nitrogen
+    - redshift
+
+- file:
+    path: "{{ansible_user_dir}}/.config/i3"
+    state: directory
+
+- name: set up config
+  template: src=config dest="{{ansible_user_dir}}/.config/i3/config"
+...
