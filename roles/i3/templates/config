@@ -39,6 +39,8 @@ bindsym $mod+Return exec urxvt
 # kill focused window
 bindsym $mod+Shift+q kill
 
+bindsym --release button2 kill
+bindsym --whole-window $mod+button2 kill
 # start dmenu (a program launcher)
 bindsym $mod+r exec rofi -show run
 bindsym $mod+w exec rofi -show window
@@ -49,8 +51,9 @@ bindsym $mod+t exec thunar
 # installed.
 # bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 
-exec xautolock -detectsleep -time 5 -locker "i3lock -t -i \"$HOME/.config/i3/lockscreen.png\""
+exec_always xautolock -detectsleep -time 5 -locker "i3lock -t -i \"$HOME/.config/i3/lockscreen.png\""
 bindsym $mod+b exec xautolock -locknow
+bindsym $mod+Shift+b exec xautolock -locknow && sleep 3 && sudo systemctl suspend
 exec --no-startup-id nitrogen --restore
 exec --no-startup-id redshift
 
@@ -105,11 +108,13 @@ bindsym $mod+space focus mode_toggle
 # focus the parent container
 bindsym $mod+a focus parent
 
-bindsym $mod+Tab focus up
-bindsym $mod+Shift+Tab focus down
+bindsym $mod+Tab focus down
+bindsym $mod+Shift+Tab focus up
 
 # focus the child container
 #bindsym $mod+d focus child
+
+workspace_layout stacked
 
 # switch to workspace
 bindsym $mod+1 workspace 1
@@ -162,7 +167,7 @@ mode "resize" {
         bindsym Escape mode "default"
 }
 
-# bindsym $mod+r mode "resize"
+bindsym $mod+Shift+s mode "resize"
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
@@ -170,63 +175,6 @@ exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 # bar {
 #         status_command i3status
 # }
-
-#############################
-### settings for i3-gaps: ###
-#############################
-
-# Set inner/outer gaps
-gaps inner 10
-gaps outer -4
-
-# Additionally, you can issue commands with the following syntax. This is useful to bind keys to changing the gap size.
-# gaps inner|outer current|all set|plus|minus <px>
-# gaps inner all set 10
-# gaps outer all plus 5
-
-# Smart gaps (gaps used if only more than one container on the workspace)
-smart_gaps on
-
-# Smart borders (draw borders around container only if it is not the only container on this workspace)
-# on|no_gaps (on=always activate and no_gaps=only activate if the gap size to the edge of the screen is 0)
-#smart_borders on
-
-# Press $mod+Shift+g to enter the gap mode. Choose o or i for modifying outer/inner gaps. Press one of + / - (in-/decrement for current workspace) or 0 (remove gaps for current workspace). If you also press Shift with these keys, the change will be global for all workspaces.
-set $mode_gaps Gaps: (o) outer, (i) inner
-set $mode_gaps_outer Outer Gaps: +|-|0 (local), Shift + +|-|0 (global)
-set $mode_gaps_inner Inner Gaps: +|-|0 (local), Shift + +|-|0 (global)
-bindsym $mod+Shift+g mode "$mode_gaps"
-
-mode "$mode_gaps" {
-        bindsym o      mode "$mode_gaps_outer"
-        bindsym i      mode "$mode_gaps_inner"
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
-}
-mode "$mode_gaps_inner" {
-        bindsym plus  gaps inner current plus 5
-        bindsym minus gaps inner current minus 5
-        bindsym 0     gaps inner current set 0
-
-        bindsym Shift+plus  gaps inner all plus 5
-        bindsym Shift+minus gaps inner all minus 5
-        bindsym Shift+0     gaps inner all set 0
-
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
-}
-mode "$mode_gaps_outer" {
-        bindsym plus  gaps outer current plus 5
-        bindsym minus gaps outer current minus 5
-        bindsym 0     gaps outer current set 0
-
-        bindsym Shift+plus  gaps outer all plus 5
-        bindsym Shift+minus gaps outer all minus 5
-        bindsym Shift+0     gaps outer all set 0
-
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
-}
 
 for_window [class="^.*"] border pixel 0
 
