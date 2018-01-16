@@ -182,7 +182,7 @@ for_window [class="^.*"] border pixel 0
 # Pulse Audio Controls
 bindsym XF86AudioRaiseVolume exec --no-startup-id "pactl list short sinks | cut -f 1 | xargs -I{} -n1 pactl set-sink-volume {} +5%"
 bindsym XF86AudioLowerVolume exec --no-startup-id "pactl list short sinks | cut -f 1 | xargs -I{} -n1 pactl set-sink-volume {} -5%"
-bindsym XF86AudioMute exec --no-startup-id "pactl list short sinks | cut -f 1 | xargs -I{} -n1  pactl set-sink-mute {} toggle" # Mute
+bindsym XF86AudioMute exec --no-startup-id "pactl list short sinks | cut -f 1 | xargs -I{} -n1  pactl set-sink-mute {} toggle"
 
 # Sreen brightness controls
 bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -inc 5 # increase screen brightness
