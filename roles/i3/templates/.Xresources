@@ -5,6 +5,7 @@
 *.background:	#1c1c22
 *.foreground:	#b0aba8
 *.cursorColor:  #b0aba8
+*.font: xft:Hack:size=10
 
 *.color0:       #313131
 *.color8:       #434343
@@ -31,31 +32,23 @@
 Xcursor.theme: Breeze
 Xcursor.size:  0
 
+
 ! XTerm SETUP HERE !
 XTerm*reverseVideo: on
-! XTerm*faceName: HackRegular:size=11:antialias=true
+XTerm*faceName: HackRegular:size=11:antialias=true
 XTerm*selectToClipboard: true
 XTerm*background: #2b2b2b
 XTerm*foreground: #e7e7e7
 XTerm*pointerColor: #16A085
-XTerm*faceName: Fixed
+!XTerm*faceName: Fixed
 XTerm*faceSize: 11
 
 
 ! URxvt SETUP HERE !
 URxvt.perl-ext-common: selection-to-clipboard
 
-!! Copy-Paste
-!URxvt.clipboard.autocopy: true
-!URxvt.keysym.M-Escape: perl:keyboard-select:activate
-!URxvt.keysym.C-C: perl:clipboard:copy
-!URxvt.keysym.C-V: perl:clipboard:paste
-!URxvt.keysym.M-C-v: perl:clipboard:paste_escaped
-!URxvt.copyCommand: xsel -ib
-!URxvt.pasteCommand: xsel -ob
-
 !! Styling
-URxvt.transparent: true
+!URxvt.transparent: true
 URxvt.shading:20
 URxvt.internalBorder: 6
 URxvt.font: xft:Hack:size=10
@@ -68,8 +61,8 @@ URxvt*foreground: 		                #b0aba8
 URxvt*cursorColor:		                #b0aba8
 URxvt*saveLines:                      5000
 
-! ROFI SETUP HERE !
 
+! ROFI SETUP HERE !
 ! Enable the extended coloring options
 rofi.color-enabled: true
 !                  bg       border   separator
@@ -88,6 +81,9 @@ rofi.columns: 1
 rofi.padding: 5
 rofi.fixed-num-lines: true
 rofi.hide-scrollbar: true
+
+
+! Other SETUP HERE !
 
 Xft.dpi: 96
 Xft.antialias: true

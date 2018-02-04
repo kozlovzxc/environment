@@ -37,7 +37,6 @@ offset-y = 0%
 radius = 0.0
 fixed-center = true
 
-
 background = ${colors.my_background}
 foreground =  ${colors.my_foreground}
 
@@ -123,7 +122,6 @@ label-layout-underline = ${colors.my_color7}
 
 label-indicator-padding = 2
 label-indicator-margin = 1
-label-indicator-background = ${colors.my_color4}
 label-indicator-underline = ${colors.my_color7}
 
 
