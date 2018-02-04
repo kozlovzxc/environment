@@ -84,7 +84,7 @@ strip-wsnumbers = true
 
 label-mode = %mode%
 label-mode-padding = 2
-label-mode-background = ${colors.my_color7}
+label-mode-background = ${colors.my_color4}
 
 ws-icon-0 = "1;"
 ws-icon-1 = "2;"
@@ -106,7 +106,7 @@ label-visible-padding = 4
 
 label-urgent = %icon%
 label-urgent-foreground = ${colors.my_foreground}
-label-urgent-background = ${colors.my_background}
+label-urgent-background =  #cc0000
 label-urgent-underline = ${colors.my_color7}
 label-urgent-padding = 2
 
@@ -118,11 +118,10 @@ blacklist-0 = num lock
 format-prefix-foreground = ${colors.my_foreground}
 
 label-layout = %layout%
-label-layout-underline = ${colors.my_color7}
 
 label-indicator-padding = 2
 label-indicator-margin = 1
-label-indicator-underline = ${colors.my_color7}
+label-indicator-background = ${colors.my_color4}
 
 
 [module/date]
