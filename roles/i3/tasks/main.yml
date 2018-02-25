@@ -1,15 +1,16 @@
 ---
-- name: Install i3 and deps
-  command: "yaourt -S {{item}}"
-  with_items:
-    - i3-gaps
-    - xautolock
-    - i3lock
-    - thunar
-    - rofi
-    - urxvt
-    - nitrogen
-    - redshift
+# - name: Install i3 and deps
+  # command: "pacman -S {{item}}"
+  # with_items:
+    # - i3-wm
+    # - xautolock
+    # - i3lock
+    # - rofi
+    # - urxvt
+    # - nitrogen
+    # - redshift
+  # become: yes
+  # udecome_user: root
 
 - file:
     path: "{{ansible_user_dir}}/.config/i3"
