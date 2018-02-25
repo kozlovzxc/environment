@@ -1,6 +1,6 @@
 ---
-- name: Install i3 and deps
-  command: "yaourt -S polybar"
+# - name: Install i3 and deps
+  # command: "yaourt -S polybar"
 
 - file:
     path: "{{ansible_user_dir}}/.config/polybar"
