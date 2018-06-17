@@ -1,3 +1,0 @@
----
-oh_my_zsh_dir: "{{ansible_user_dir}}/.oh-my-zsh"
-...

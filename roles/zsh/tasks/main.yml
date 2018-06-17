@@ -17,16 +17,16 @@
   when: ansible_os_family == 'Darwin'
 
 - name: Install oh-my-zsh
-  git: repo=https://github.com/robbyrussell/oh-my-zsh.git dest={{oh_my_zsh_dir}}
+  git: repo=https://github.com/robbyrussell/oh-my-zsh.git dest={{ansible_user_dir}}/.oh-my-zsh
 
 - name: set up oh-my-zsh config
   template: src=zshrc.j2 dest={{ansible_user_dir}}/.zshrc
 
 - name: set up colorscheme
-  copy: src=honukai.zsh-theme dest={{oh_my_zsh_dir}}/themes/honukai.zsh-theme
+  copy: src=honukai.zsh-theme dest={{ansible_user_dir}}/.oh-my-zsh/themes/honukai.zsh-theme
 
 - name: set up zsh-syntax-highlighting
-  git: repo=https://github.com/zsh-users/zsh-syntax-highlighting.git dest={{oh_my_zsh_dir}}/custom/plugins/zsh-syntax-highlighting
+  git: repo=https://github.com/zsh-users/zsh-syntax-highlighting.git dest={{ansible_user_dir}}/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
 
 - name: download fzf
   git: repo=https://github.com/junegunn/fzf dest={{ansible_env.HOME}}/.fzf
@@ -35,7 +35,7 @@
   command: "{{ansible_env.HOME}}/.fzf/install --all --64"
 
 - name: download zsh-autocompletion
-  git: repo=https://github.com/zsh-users/zsh-autosuggestions dest={{oh_my_zsh_dir}}/custom/plugins/zsh-autosuggestions
+  git: repo=https://github.com/zsh-users/zsh-autosuggestions dest={{ansible_user_dir}}/.oh-my-zsh/custom/plugins/zsh-autosuggestions
 
 - name: set up zsh as default shell
   user: name={{ansible_user_id}} shell=/bin/zsh
