@@ -1,41 +1,38 @@
 ---
 - name: Install vim
-  action: >
-    {{ansible_pkg_mgr}} name=vim
+  package: name=vim state=present
   become: yes
   become_user: root
+  when: ansible_os_family != 'Darwin'
 
-- name: set up vim config
+- name: Install vim on Mac
+  command: brew install vim
+  when: ansible_os_family == 'Darwin'
+
+- name: Set up vim config
   copy: src=vimrc dest={{ansible_user_dir}}/.vimrc
 
-- name: Install deps(Ubuntu)
-  action: >
-    {{ansible_pkg_mgr}} name={{item}}
-  become: yes
-  become_user: root
-  with_items:
-    - exuberant-ctags
-    - xsel
-  when: ansible_distribution == 'Ubuntu'
-
-- name: Install Ctags(Archlinux)
-  action: >
-    {{ansible_pkg_mgr}} name={{item}}
-  become: yes
-  become_user: root
+- name: Install ctags
+  package: name={{item}} state=present
   with_items:
     - ctags
     - xsel
-  when: ansible_distribution == 'Archlinux'
+  become: yes
+  become_user: root
+  when: ansible_os_family != 'Darwin'
 
-- name: set up ctags config
+- name: Install ctags on Mac
+  command: brew install ctags
+  when: ansible_os_family == 'Darwin'
+
+- name: Set up ctags config
   copy: src=ctags dest={{ansible_user_dir}}/.ctags
 
 - name: Install Vundle
   git: repo=https://github.com/VundleVim/Vundle.vim.git dest={{ansible_user_dir}}/.vim/bundle/Vundle.vim
 
 - name: Install Vundle Plugins
-  command: vim -E -s -c "source {{ansible_user_dir}}/.vimrc" -c PluginInstall -c qa 
+  command: vim -E -s -c "source {{ansible_user_dir}}/.vimrc" -c PluginInstall -c qa
   ignore_errors: true
 
 #- name: Compile YouCompleteMe

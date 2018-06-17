@@ -1,4 +1,5 @@
 [machines]
-# localhost  ansible_connection=local
-localhost ansible_connection=ssh ansible_ssh_user=vagrant ansible_ssh_pass=vagrant ansible_ssh_port=2222
+localhost ansible_connection=local
+Mallory ansible_connection=ssh ansible_ssh_user=kozlovzxc
+#localhost ansible_connection=ssh ansible_ssh_user=vagrant ansible_ssh_pass=vagrant ansible_ssh_port=2222
 #localhost ansible_connection=ssh ansible_ssh_user=ubuntu ansible_ssh_pass=ubuntu ansible_ssh_port=2222

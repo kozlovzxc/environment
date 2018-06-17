@@ -1,13 +1,20 @@
 ---
 - name: Install dependencies
-  action: >
-    {{ansible_pkg_mgr}} name={{item}}
+  package: name={{item}} state=present
   with_items:
     - zsh
     - curl
     - autojump
   become: yes
   become_user: root
+  when: ansible_os_family != 'Darwin'
+
+- name: Install dependencies
+  command: brew install {{item}}
+  with_items:
+    - zsh
+    - autojump
+  when: ansible_os_family == 'Darwin'
 
 - name: Install oh-my-zsh
   git: repo=https://github.com/robbyrussell/oh-my-zsh.git dest={{oh_my_zsh_dir}}
@@ -34,4 +41,5 @@
   user: name={{ansible_user_id}} shell=/bin/zsh
   become: yes
   become_user: root
+  when: ansible_os_family != 'Darwin'
 ...

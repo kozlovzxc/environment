@@ -1,10 +1,14 @@
 ---
-- name: install tmux
-  action: >
-    {{ansible_pkg_mgr}} name=tmux
+- name: Install tmux
+  package: name=tmux state=present
   become: yes
   become_user: root
+  when: ansible_os_family != 'Darwin'
 
-- name: set up tmux config
-  template: src=tmux.conf dest={{ansible_user_dir}}/.tmux.conf 
+- name: Install tmux on Mac
+  command: brew install tmux
+  when: ansible_os_family == 'Darwin'
+
+- name: Set up tmux config
+  template: src=tmux.conf dest={{ansible_user_dir}}/.tmux.conf
 ...
