@@ -9,10 +9,8 @@ call vundle#begin()
 
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
-Plugin 'taglist.vim'
 Plugin 'molokai'
 Plugin 'scrooloose/nerdTree'
-Bundle 'chase/vim-ansible-yaml'
 Plugin 'vim-airline/vim-airline'
 Plugin 'morhetz/gruvbox'
 Plugin 'tagbar'
@@ -20,8 +18,6 @@ Plugin 'delimitMate.vim'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'mhinz/vim-signify'
 Plugin 'kien/ctrlp.vim'
-Plugin 'dag/vim-fish'
-Plugin 'surround.vim'
 Plugin 'christoomey/vim-system-copy'
 " Plugin 'Valloric/YouCompleteMe'
 " Plugin 'Syntastic'
@@ -124,8 +120,17 @@ map <F3> :NERDTreeToggle<CR>
 map <F2> :TagbarToggle<CR>
 
 " Syntastic Plugin
-map <F4> :SyntasticCheck<CR>
+" map <F4> :SyntasticCheck<CR>
+" set statusline+=%#warningmsg#
+" set statusline+=%{SyntasticStatuslineFlag()}
+" set statusline+=%*
 
+" let g:syntastic_always_populate_loc_list = 1
+" let g:syntastic_auto_loc_list = 1
+" let g:syntastic_check_on_open = 1
+" let g:syntastic_check_on_wq = 0
+
+" Airline extension
 let g:airline#extensions#tabline#enabled = 1
 
 " disable visual bell
@@ -135,17 +140,7 @@ set noerrorbells visualbell t_vb=
 " let g:ycm_collect_identifiers_from_tags_files = 1
 " set completeopt-=preview
 
-" Syntastic
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-
-" nerdcommenter
+" Nerdcommenter
 filetype plugin on
 " Add spaces after comment delimiters by default
 let g:NERDSpaceDelims = 1
