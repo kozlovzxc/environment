@@ -2,7 +2,6 @@
 - name: deploy environment
   hosts: machines
   roles:
-    - {role: git, tags: ["git"]}
     - {role: tmux, tags: ["tmux"]}
     - {role: vim, tags: ["vim"]}
     - {role: zsh, tags: ["zsh"]}
