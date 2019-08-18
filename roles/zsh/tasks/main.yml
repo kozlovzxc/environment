@@ -22,9 +22,6 @@
 - name: set up oh-my-zsh config
   template: src=zshrc.j2 dest={{ansible_user_dir}}/.zshrc
 
-- name: set up colorscheme
-  copy: src=honukai.zsh-theme dest={{ansible_user_dir}}/.oh-my-zsh/themes/honukai.zsh-theme
-
 - name: set up zsh-syntax-highlighting
   git: repo=https://github.com/zsh-users/zsh-syntax-highlighting.git dest={{ansible_user_dir}}/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
 
