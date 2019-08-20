@@ -12,18 +12,17 @@
 - name: Set up vim config
   copy: src=vimrc dest={{ansible_user_dir}}/.vimrc
 
-# - name: Install ctags
-#   package: name={{item}} state=present
-#   with_items:
-#     - ctags
-#     - xsel
-#   become: yes
-#   become_user: root
-#   when: ansible_os_family != 'Darwin'
+- name: Install ctags
+  package: name={{item}} state=present
+  with_items:
+    - ctags
+  become: yes
+  become_user: root
+  when: ansible_os_family != 'Darwin'
 
-# - name: Install ctags on Mac
-#   command: brew install ctags
-#   when: ansible_os_family == 'Darwin'
+- name: Install ctags on Mac
+  command: brew install ctags
+  when: ansible_os_family == 'Darwin'
 
 # - name: Set up ctags config
 #   copy: src=ctags dest={{ansible_user_dir}}/.ctags
